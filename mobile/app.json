@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Bankily",
+    "slug": "bankily-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "android": {
+      "package": "mr.bankily.mobile",
+      "versionCode": 1,
+      "edgeToEdgeEnabled": false
+    },
+    "ios": {
+      "bundleIdentifier": "mr.bankily.mobile",
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "name": "Bankily"
+    }
+  }
+}

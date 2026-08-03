@@ -1,10 +1,21 @@
-# Bankily Prototype
+# Bankily
 
-نسخة أولية خفيفة لتطبيق Bankily وموقع تحميل APK.
+مستودع نموذج Bankily ويحتوي الآن على نسختين:
 
-- الموقع الرئيسي: `index.html`
-- تجربة التطبيق: `app.html`
-- مشروع Android: `android/`
-- بناء APK تلقائيًا: `.github/workflows/build-apk.yml`
+- `mobile/`: تطبيق حقيقي مبني بـ React Native + Expo + TypeScript ويعمل على Android وiOS والويب.
+- `app.html`: النموذج القديم المبني بـ HTML للتجربة السريعة.
+- `android/`: غلاف Android القديم للنموذج الأولي.
 
-> هذه نسخة تجريبية ولا تستخدم بيانات مالية حقيقية.
+## تشغيل تطبيق React Native
+
+```bash
+cd mobile
+npm install
+npm start
+```
+
+## بناء APK
+
+يوجد GitHub Actions workflow باسم `Build React Native APK` يقوم بتوليد مشروع Android وبناء APK ورفعه كملف Artifact.
+
+> التطبيق الحالي تجريبي ولا يستخدم بيانات مالية أو أموالًا حقيقية.

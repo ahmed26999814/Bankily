@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:allowBackup="false" android:label="Bankily" android:theme="@style/AppTheme" android:usesCleartextTraffic="false" android:supportsRtl="true">
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/bankily_logo"
+        android:roundIcon="@drawable/bankily_logo"
+        android:label="Bankily"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="false"
+        android:supportsRtl="true">
         <activity android:name="mr.bankily.app.MainActivity" android:screenOrientation="portrait" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

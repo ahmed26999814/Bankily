@@ -2,12 +2,10 @@ package mr.bankily.app;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowInsets;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -33,18 +31,10 @@ public class MainActivity extends Activity {
 
         FrameLayout root = new FrameLayout(this);
         root.setBackgroundColor(Color.WHITE);
-        root.setClipToPadding(false);
+        root.setClipToPadding(true);
         root.setOnApplyWindowInsetsListener((view, windowInsets) -> {
-            int top;
-            int bottom;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                Insets bars = windowInsets.getInsets(WindowInsets.Type.systemBars());
-                top = bars.top;
-                bottom = bars.bottom;
-            } else {
-                top = windowInsets.getSystemWindowInsetTop();
-                bottom = windowInsets.getSystemWindowInsetBottom();
-            }
+            int top = windowInsets.getSystemWindowInsetTop();
+            int bottom = windowInsets.getSystemWindowInsetBottom();
             view.setPadding(0, top, 0, bottom);
             return windowInsets;
         });
@@ -95,8 +85,10 @@ public class MainActivity extends Activity {
     public void onBackPressed() {
         webView.evaluateJavascript(
                 "(function(){" +
+                "var drawer=document.getElementById('drawerOverlay');" +
                 "var service=document.getElementById('serviceView');" +
                 "var home=document.getElementById('homeView');" +
+                "if(drawer&&drawer.classList.contains('open')){drawer.classList.remove('open');return 'handled';}" +
                 "if(service&&service.classList.contains('active')){" +
                 "service.classList.remove('active');home.classList.add('active');return 'handled';}" +
                 "return 'not-handled';" +

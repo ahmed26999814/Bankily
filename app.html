@@ -3,82 +3,167 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#10b6c9">
+<meta name="theme-color" content="#ffffff">
 <title>Bankily</title>
 <style>
-:root{--turquoise:#10b6c9;--turquoise-dark:#039fb2;--gold:#d1b42c;--ink:#151515;--muted:#7f7a8a;--line:#c9c9c9;--paper:#fff;--app:#f7f7f7}
+:root{
+  --turquoise:#06b7c7;
+  --turquoise-dark:#0697a8;
+  --yellow:#ffc20a;
+  --gold:#d0b52d;
+  --ink:#111;
+  --muted:#7a7886;
+  --line:#bfc0c2;
+  --paper:#fff;
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;background:#ececec;font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
-button,input,select{font:inherit}.app{width:100%;max-width:460px;min-height:100vh;margin:auto;background:var(--app);position:relative;overflow:hidden}
-.home-screen{min-height:100vh;padding-bottom:78px;background:#f7f7f7}.dashboard-header{height:154px;background:var(--turquoise);color:#fff;padding:12px 12px 10px}.header-row{height:28px;display:grid;grid-template-columns:34px 1fr 34px;align-items:center}.menu-btn{grid-column:1;background:transparent;border:0;color:#f5f5f5;font-size:31px;line-height:1;padding:0;cursor:pointer}.dashboard-title{grid-column:2;text-align:center;font-size:19px;font-weight:400;line-height:1}.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:19px;direction:rtl}.quick-action{border:0;background:transparent;color:#fff;padding:0;cursor:pointer}.quick-circle{width:56px;height:56px;border:1.2px solid var(--gold);border-radius:50%;margin:0 auto 7px;display:grid;place-items:center}.quick-circle svg{width:29px;height:29px;stroke:#f2f2f2;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.quick-label{font-size:14px;line-height:1.2;font-weight:400;white-space:nowrap}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:12px 11px 0;direction:rtl}.service-card{height:128px;border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10px 5px;cursor:pointer}.service-icon{height:44px;display:grid;place-items:center;margin-bottom:12px}.service-icon svg{width:40px;height:40px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.service-icon.teal svg{stroke:var(--turquoise)}.service-icon.gold svg{stroke:#f0bc0b}.service-label{font-size:15px;line-height:1.35;text-align:center;font-weight:400}.single-third{grid-column:1}.bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:460px;height:76px;background:#fafafa;border-top:1px solid #e1e1e1;display:grid;grid-template-columns:repeat(4,1fr);z-index:20;direction:rtl}.nav-btn{border:0;background:transparent;color:#777383;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px 2px;cursor:pointer}.nav-btn svg{width:29px;height:29px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.nav-btn span{font-size:12px}.nav-btn.active{color:var(--turquoise)}
-.screen{display:none;min-height:100vh;padding-bottom:28px;background:#f4f4f4}.screen.active{display:block}.screen-head{height:74px;background:var(--turquoise);color:#fff;display:grid;grid-template-columns:52px 1fr 52px;align-items:center;padding:0 10px;position:sticky;top:0;z-index:10}.back-btn{border:0;background:transparent;color:#fff;font-size:35px;cursor:pointer;transform:scaleX(-1)}.screen-title{text-align:center;font-size:21px;font-weight:400}.screen-body{padding:18px}.panel{background:#fff;border:1px solid #ddd;border-radius:7px;padding:18px;margin-bottom:14px}.panel h3{font-size:18px;margin:0 0 14px;font-weight:500}.field{margin-bottom:14px}.field label{display:block;font-size:14px;margin-bottom:7px;color:#4f4f4f}.field input,.field select{width:100%;height:48px;border:1px solid #cfcfcf;border-radius:6px;background:#fff;padding:0 12px;outline:none}.field input:focus,.field select:focus{border-color:var(--turquoise)}.primary{width:100%;height:50px;border:0;border-radius:6px;background:var(--turquoise);color:#fff;font-weight:700;cursor:pointer}.secondary{width:100%;height:48px;border:1px solid var(--turquoise);border-radius:6px;background:#fff;color:var(--turquoise-dark);font-weight:700;cursor:pointer}.list-item{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ececec;padding:14px 0}.list-item:last-child{border-bottom:0}.chip{padding:5px 9px;border-radius:999px;background:#e8f8fa;color:#04899b;font-size:12px}.empty{color:#777;text-align:center;padding:24px 10px}.side-menu{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.32);display:none}.side-menu.open{display:block}.drawer{width:82%;max-width:330px;height:100%;background:#fff;margin-right:0;margin-left:auto;padding:28px 20px;box-shadow:-12px 0 35px rgba(0,0,0,.2)}.drawer h2{margin:0 0 25px;color:var(--turquoise-dark)}.drawer button{width:100%;text-align:right;border:0;background:#fff;border-bottom:1px solid #eee;padding:15px 4px;font-size:16px}.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,25px);background:#222;color:#fff;padding:12px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:.22s;z-index:60;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:380px){.dashboard-header{height:150px}.quick-circle{width:52px;height:52px}.quick-label{font-size:12.5px}.service-grid{padding-inline:8px}.service-card{height:122px}.service-label{font-size:13.5px}.service-icon svg{width:37px;height:37px}}
-@media(min-width:700px){body{background:#d9eef1}.app{box-shadow:0 0 35px rgba(0,0,0,.14)}}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:var(--ink);font-family:"Droid Arabic Naskh","Noto Naskh Arabic",Tahoma,Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}.app{width:100%;height:100vh;height:100dvh;max-width:520px;margin:0 auto;position:relative;overflow:hidden;background:#fff}
+.view{display:none;width:100%;height:100%}.view.active{display:block}
+.login-view{background:#fff;position:relative;min-height:100%;padding-bottom:76px;overflow:auto}
+.login-content{min-height:calc(100vh - 76px);min-height:calc(100dvh - 76px);display:flex;flex-direction:column;padding:26px 34px 18px}
+.brand{width:min(78vw,360px);margin:8px auto 28px;display:block}
+.brand svg{display:block;width:100%;height:auto;overflow:visible}
+.login-form{width:100%;margin-top:2px}
+.field-block{margin:0 0 30px}
+.field-label{display:block;text-align:right;font-size:22px;line-height:1.35;margin:0 0 8px 0;font-weight:400}
+.input-line{height:56px;border-bottom:2px solid #222;display:flex;align-items:center;direction:rtl}
+.input-line input{border:0;outline:0;background:transparent;width:100%;height:100%;font-size:23px;text-align:right;padding:0 8px;color:#111;direction:ltr}
+.field-icon{width:43px;min-width:43px;height:43px;margin-right:13px;display:grid;place-items:center}
+.field-icon svg{width:39px;height:39px;fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pin-row{height:62px;display:flex;align-items:center;justify-content:flex-start;gap:15px;direction:ltr;padding-left:66px;position:relative}
+.pin-cell{width:45px;height:49px;border:0;border-bottom:3px solid #111;background:#fff;text-align:center;font-size:34px;line-height:45px;outline:0;padding:0;direction:ltr}
+.pin-cell:focus{border-bottom-color:var(--turquoise)}
+.pin-lock{position:absolute;right:0;top:7px;width:43px;height:43px}
+.pin-lock svg{width:43px;height:43px;fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.forgot{display:inline-block;margin-top:8px;font-size:20px;color:#111;text-decoration:underline;text-underline-offset:4px;direction:rtl;align-self:flex-start}
+.login-spacer{flex:1;min-height:90px}
+.register{text-align:center;font-size:20px;text-decoration:underline;text-underline-offset:4px;color:#111;margin:16px 0 0}
+.login-button{position:absolute;left:0;right:0;bottom:0;height:76px;border:0;background:var(--yellow);color:#fff;font-size:30px;font-weight:400;width:100%}
+.home-view{background:#fff;min-height:100%;padding-bottom:78px;overflow:auto}
+.dashboard-header{height:258px;background:var(--turquoise);color:#fff;padding:24px 20px 12px}
+.header-row{height:48px;display:grid;grid-template-columns:52px 1fr 52px;align-items:center;direction:rtl}
+.menu-btn{grid-column:1;border:0;background:transparent;padding:0;color:#fff;display:grid;place-items:center}
+.menu-btn svg{width:41px;height:41px;fill:none;stroke:#fff;stroke-width:3.1;stroke-linecap:square}
+.dashboard-title{grid-column:2;text-align:center;font-size:29px;font-weight:400;line-height:1}
+.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);direction:rtl;margin-top:18px;gap:4px}
+.quick-action{border:0;background:transparent;color:#fff;padding:0;display:flex;flex-direction:column;align-items:center}
+.quick-circle{width:84px;height:84px;border:1.7px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin-bottom:10px}
+.quick-circle svg{width:48px;height:48px;fill:none;stroke:#f5f5f5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.quick-label{font-size:22px;line-height:1.2;white-space:nowrap;font-weight:400}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:20px 19px 0;direction:rtl;background:#fff}
+.service-card{height:213px;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 4px;color:#111}
+.service-icon{height:76px;margin-bottom:18px;display:grid;place-items:center}
+.service-icon svg{width:68px;height:68px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.service-icon.teal svg{stroke:var(--turquoise)}.service-icon.yellow svg{stroke:var(--yellow)}
+.service-label{font-size:22px;line-height:1.35;text-align:center;font-weight:400}
+.gimtel{grid-column:1}.gimtel-logo{width:72px;height:72px;border-radius:50%;background:var(--turquoise);color:#fff;display:grid;place-items:center;font:700 49px/1 Arial,sans-serif;margin-bottom:18px}.gimtel-logo span{transform:translateY(2px)}
+.bottom-nav{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #eee;display:grid;grid-template-columns:repeat(4,1fr);direction:rtl;z-index:20}
+.nav-btn{border:0;background:#fff;color:#7d7a89;padding:4px 1px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.nav-btn svg{width:43px;height:43px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.nav-btn span{font-size:17px;line-height:1.1}.nav-btn.active{color:var(--turquoise)}
+.service-view{background:#f5f5f5;min-height:100%;overflow:auto;padding-bottom:24px}
+.service-head{height:78px;background:var(--turquoise);color:#fff;display:grid;grid-template-columns:58px 1fr 58px;align-items:center;position:sticky;top:0;z-index:5;padding:0 9px;direction:rtl}
+.back-btn{grid-column:1;border:0;background:transparent;color:#fff;font-size:40px;line-height:1}.service-title{grid-column:2;text-align:center;font-size:25px}
+.service-body{padding:18px}.panel{background:#fff;border:1px solid #ddd;padding:21px 18px;margin-bottom:14px}.panel h3{font-size:21px;margin:0 0 15px;font-weight:500}.panel p{font-size:17px;line-height:1.8;margin:0 0 15px}.form-row{margin-bottom:15px}.form-row label{display:block;font-size:17px;margin-bottom:7px}.form-row input{width:100%;height:52px;border:1px solid #c9c9c9;background:#fff;padding:0 12px;outline:0;font-size:18px}.primary{height:55px;width:100%;border:0;background:var(--turquoise);color:#fff;font-size:20px}
+.drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);z-index:50;display:none}.drawer-overlay.open{display:block}.drawer{position:absolute;top:0;right:0;width:78%;max-width:350px;height:100%;background:#fff;padding:31px 20px;box-shadow:-10px 0 30px rgba(0,0,0,.2)}.drawer-logo{font:bold 31px Arial;color:var(--turquoise-dark);margin-bottom:25px}.drawer button{width:100%;border:0;border-bottom:1px solid #eee;background:#fff;text-align:right;font-size:19px;padding:16px 6px}.toast{position:absolute;left:50%;bottom:96px;transform:translate(-50%,18px);background:#222;color:#fff;padding:11px 17px;border-radius:5px;font-size:16px;opacity:0;pointer-events:none;transition:.2s;z-index:70;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  .login-content{padding-inline:28px}.brand{width:min(80vw,330px);margin-top:2px;margin-bottom:20px}.field-label{font-size:19px}.input-line input{font-size:21px}.pin-row{gap:12px;padding-left:56px}.pin-cell{width:39px}.forgot,.register{font-size:18px}
+  .dashboard-header{height:218px;padding:18px 12px 9px}.dashboard-title{font-size:24px}.menu-btn svg{width:35px;height:35px}.quick-actions{margin-top:11px}.quick-circle{width:69px;height:69px}.quick-circle svg{width:40px;height:40px}.quick-label{font-size:18px}.service-grid{padding:14px 12px 0;gap:2px}.service-card{height:170px}.service-icon{height:59px;margin-bottom:13px}.service-icon svg{width:55px;height:55px}.service-label{font-size:18px}.gimtel-logo{width:59px;height:59px;font-size:40px;margin-bottom:13px}.nav-btn svg{width:37px;height:37px}.nav-btn span{font-size:14px}
+}
+@media(max-width:360px){
+  .dashboard-header{height:202px}.quick-circle{width:62px;height:62px}.quick-label{font-size:16px}.service-card{height:153px}.service-label{font-size:16px}.service-icon svg{width:49px;height:49px}.login-button{height:68px;font-size:27px}.login-view{padding-bottom:68px}.login-content{min-height:calc(100dvh - 68px)}
+}
+@media(min-width:521px){body{background:#e8e8e8}.app{box-shadow:0 0 32px rgba(0,0,0,.16)}}
 </style>
 </head>
 <body>
-<div class="app">
-  <section id="home" class="home-screen">
+<div class="app" id="app">
+  <section class="view login-view active" id="loginView">
+    <div class="login-content">
+      <div class="brand" aria-label="Bankily">
+        <svg viewBox="0 0 620 310" role="img">
+          <defs><filter id="shadow" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="8" dy="10" stdDeviation="8" flood-color="#999" flood-opacity=".45"/></filter></defs>
+          <g transform="translate(38 12)">
+            <g transform="rotate(-8 118 93)">
+              <path d="M35 80 112 22l112 21-16 92-106 18z" fill="#0a93a4"/><path d="M57 79 119 37l82 15-10 18-77-14-45 35z" fill="#fff" opacity=".92"/><circle cx="170" cy="68" r="13" fill="#fff" opacity=".9"/><path d="M21 115 101 55l108 21-19 91-101 15z" fill="#0b879b"/><path d="M49 116 106 71l80 16-5 21-73-15-42 34z" fill="#fff" opacity=".92"/>
+            </g>
+            <g filter="url(#shadow)"><rect x="98" y="50" width="107" height="185" rx="25" fill="#ffc20a"/><rect x="116" y="68" width="71" height="132" rx="8" fill="#fff"/><rect x="139" y="207" width="26" height="7" rx="3.5" fill="#0793a6"/><text x="151" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="32" fill="#5c5c5c">BPM</text></g>
+          </g>
+          <g filter="url(#shadow)"><text x="244" y="139" font-family="Arial,sans-serif" font-size="87" font-weight="700" fill="#078da0">Bankily</text><text x="257" y="231" font-family="Tahoma,Arial,sans-serif" font-size="99" font-weight="500" fill="#ffc20a">بنكيلي</text></g>
+          <text x="478" y="280" font-family="Arial,sans-serif" font-size="24" letter-spacing="8" fill="#444">PAR BPM</text>
+        </svg>
+      </div>
+      <div class="login-form">
+        <div class="field-block">
+          <label class="field-label" for="phone">اسم المستخدم أو رقم الهاتف</label>
+          <div class="input-line"><input id="phone" inputmode="tel" autocomplete="username" value="37513164" aria-label="اسم المستخدم أو رقم الهاتف"><span class="field-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="18" r="7"/><path d="M10 39c2-8 8-12 14-12s12 4 14 12"/></svg></span></div>
+        </div>
+        <div class="field-block" style="margin-bottom:0">
+          <label class="field-label">الرقم السري</label>
+          <div class="pin-row" id="pinRow">
+            <input class="pin-cell" inputmode="numeric" maxlength="1" aria-label="الرقم الأول"><input class="pin-cell" inputmode="numeric" maxlength="1" aria-label="الرقم الثاني"><input class="pin-cell" inputmode="numeric" maxlength="1" aria-label="الرقم الثالث"><input class="pin-cell" inputmode="numeric" maxlength="1" aria-label="الرقم الرابع">
+            <span class="pin-lock"><svg viewBox="0 0 48 48"><rect x="10" y="20" width="28" height="23" rx="2"/><path d="M16 20v-6a8 8 0 0 1 16 0v6"/><circle cx="24" cy="31" r="2"/><path d="M24 33v5"/></svg></span>
+          </div>
+        </div>
+        <button class="forgot" type="button" id="forgotBtn">نسيت الرقم السري ؟</button>
+      </div>
+      <div class="login-spacer"></div>
+      <button class="register" type="button" id="registerBtn">مستخدم جديد ؟ سجل الآن!</button>
+    </div>
+    <button class="login-button" type="button" id="loginBtn">تسجيل الدخول</button>
+  </section>
+  <section class="view home-view" id="homeView">
     <header class="dashboard-header">
-      <div class="header-row"><button class="menu-btn" id="openMenu" aria-label="القائمة">☰</button><div class="dashboard-title">لوحة القيادة</div></div>
+      <div class="header-row"><button class="menu-btn" id="menuBtn" aria-label="القائمة"><svg viewBox="0 0 48 48"><path d="M8 12h32M8 24h32M8 36h32"/></svg></button><div class="dashboard-title">لوحة القيادة</div></div>
       <div class="quick-actions">
-        <button class="quick-action" data-page="purchase"><div class="quick-circle"><svg viewBox="0 0 64 64"><rect x="12" y="9" width="25" height="42" rx="2"/><path d="M18 16h13M18 22h13M18 28h13M20 42h8"/><path d="M38 25l6-6 7 7 5-5v24H39z"/><path d="M42 34h10M42 39h8"/></svg></div><div class="quick-label">تسديد مشتريات</div></button>
-        <button class="quick-action" data-page="transfer"><div class="quick-circle"><svg viewBox="0 0 64 64"><rect x="10" y="12" width="36" height="25" rx="2"/><rect x="15" y="17" width="36" height="25" rx="2"/><path d="M20 22h26v15H20z"/><circle cx="33" cy="29.5" r="4"/><path d="M9 48h27M15 43l-6 5 6 5M55 48H38M49 43l6 5-6 5"/></svg></div><div class="quick-label">تحويل الأموال</div></button>
-        <button class="quick-action" data-page="account"><div class="quick-circle"><svg viewBox="0 0 64 64"><rect x="13" y="9" width="24" height="44" rx="2"/><path d="M19 16h12M19 21h12M19 26h12M19 31h8M19 38h12M19 43h12"/><path d="M37 16h11v35H37M42 11h9v40"/></svg></div><div class="quick-label">حسابي</div></button>
+        <button class="quick-action" data-page="purchase"><span class="quick-circle"><svg viewBox="0 0 64 64"><rect x="12" y="8" width="24" height="45" rx="2"/><path d="M18 16h12M18 21h12M18 27h12M18 33h9M18 39h10"/><path d="M38 23h14v31H38zM42 30h6M42 36h6M42 42h6"/></svg></span><span class="quick-label">تسديد مشتريات</span></button>
+        <button class="quick-action" data-page="transfer"><span class="quick-circle"><svg viewBox="0 0 64 64"><rect x="9" y="11" width="36" height="24" rx="2"/><rect x="14" y="16" width="36" height="24" rx="2"/><path d="M19 21h26v14H19z"/><circle cx="32" cy="28" r="4"/><path d="M8 49h26M14 44l-6 5 6 5M56 49H38M50 44l6 5-6 5"/></svg></span><span class="quick-label">تحويل الأموال</span></button>
+        <button class="quick-action" data-page="account"><span class="quick-circle"><svg viewBox="0 0 64 64"><rect x="12" y="8" width="23" height="45" rx="2"/><path d="M18 15h11M18 21h11M18 27h11M18 34h8M18 40h11"/><path d="M36 14h13v40H36M42 9h11v45"/></svg></span><span class="quick-label">حسابي</span></button>
       </div>
     </header>
-
     <main class="service-grid">
-      <button class="service-card" data-page="recharge"><div class="service-icon teal"><svg viewBox="0 0 64 64"><rect x="19" y="5" width="28" height="52" rx="3"/><path d="M27 10h12M29 52h8"/><path d="M25 36l8-9 8 9M33 27v18"/></svg></div><div class="service-label">تعبئة رصيد الهاتف</div></button>
-      <button class="service-card" data-page="bills"><div class="service-icon gold"><svg viewBox="0 0 64 64"><path d="M18 7h25v46l-5-3-5 3-5-3-5 3-5-3z"/><path d="M24 16h13M24 22h13M24 28h13M24 34h10"/><path d="M13 31c-3 2-5 6-5 10v12M49 28c4 2 7 6 7 12v13"/></svg></div><div class="service-label">تسديد الفواتير</div></button>
-      <button class="service-card" data-page="checks"><div class="service-icon teal"><svg viewBox="0 0 64 64"><path d="M12 15h38v31H12z"/><path d="M17 21h27M17 27h18M17 36h9M31 36h13"/><path d="M8 19h4v31h38v-4M16 11h38v31h-4"/></svg></div><div class="service-label">طلب دفتر شيكات</div></button>
-      <button class="service-card" data-page="cards"><div class="service-icon gold"><svg viewBox="0 0 64 64"><rect x="8" y="15" width="48" height="34" rx="4"/><path d="M8 24h48M14 40h13"/><rect x="41" y="30" width="8" height="7" rx="1"/></svg></div><div class="service-label">البطاقات البنكية</div></button>
-      <button class="service-card" data-page="cash"><div class="service-icon teal"><svg viewBox="0 0 64 64"><path d="M12 13h40v10H12zM17 23h30v30H17z"/><path d="M32 28v17M26 39l6 6 6-6"/><path d="M12 18H6v-6h52v6h-6"/></svg></div><div class="service-label">سحب النقود</div></button>
-      <button class="service-card" data-page="bpay"><div class="service-icon gold"><svg viewBox="0 0 64 64"><rect x="18" y="7" width="28" height="50" rx="3"/><path d="M25 12h14M28 51h8"/><path d="M23 27h18v15H23zM26 31h12M27 36h10"/></svg></div><div class="service-label">ب-باي</div></button>
-      <button class="service-card single-third" data-page="gimtel"><div class="service-icon teal"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="25" fill="#10b6c9" stroke="none"/><path d="M42 22c-3-3-6-4-10-4-8 0-14 6-14 14s6 14 14 14c4 0 8-1 11-4V31H31v7h5v2c-1 1-3 1-4 1-5 0-8-4-8-9s3-9 8-9c2 0 4 1 6 3z" stroke="#fff" fill="none" stroke-width="4"/></svg></div><div class="service-label">جيمتل</div></button>
+      <button class="service-card" data-page="recharge"><span class="service-icon teal"><svg viewBox="0 0 64 64"><rect x="18" y="5" width="29" height="53" rx="3"/><path d="M26 10h13M28 53h9"/><path d="M24 37l9-10 9 10M33 27v19"/><rect x="14" y="10" width="29" height="53" rx="3" opacity=".45"/></svg></span><span class="service-label">تعبئة رصيد الهاتف</span></button>
+      <button class="service-card" data-page="bills"><span class="service-icon yellow"><svg viewBox="0 0 64 64"><path d="M19 6h25v48l-5-3-5 3-5-3-5 3-5-3z"/><path d="M25 16h13M25 22h13M25 28h13M25 34h10"/><path d="M13 31c-4 3-6 7-6 12v12M49 28c5 2 8 7 8 13v14"/></svg></span><span class="service-label">تسديد الفواتير</span></button>
+      <button class="service-card" data-page="checks"><span class="service-icon teal"><svg viewBox="0 0 64 64"><path d="M13 18h39v29H13z"/><path d="M19 25h27M19 31h18M19 39h10M34 39h12"/><path d="M9 22h4v29h39v-4M17 14h39v29h-4"/><path d="M9 14h8v8H9z"/></svg></span><span class="service-label">طلب دفتر شيكات</span></button>
+      <button class="service-card" data-page="cards"><span class="service-icon yellow"><svg viewBox="0 0 64 64"><rect x="8" y="15" width="48" height="34" rx="4"/><path d="M8 25h48M14 40h13"/><rect x="41" y="31" width="9" height="7" rx="1"/></svg></span><span class="service-label">البطاقات البنكية</span></button>
+      <button class="service-card" data-page="cash"><span class="service-icon teal"><svg viewBox="0 0 64 64"><path d="M12 12h40v11H12zM17 23h30v31H17z"/><path d="M32 28v18M26 40l6 6 6-6"/><path d="M12 17H7v-6h50v6h-5"/></svg></span><span class="service-label">سحب النقود</span></button>
+      <button class="service-card" data-page="bpay"><span class="service-icon yellow"><svg viewBox="0 0 64 64"><rect x="18" y="7" width="28" height="50" rx="3"/><path d="M25 12h14M28 52h8"/><path d="M23 27h18v15H23zM26 31h12M27 36h10"/><path d="M21 21h22"/></svg></span><span class="service-label">ب-باي</span></button>
+      <button class="service-card gimtel" data-page="gimtel"><span class="gimtel-logo"><span>G</span></span><span class="service-label">جيمتل</span></button>
     </main>
-
     <nav class="bottom-nav">
-      <button class="nav-btn active" data-nav="home"><svg viewBox="0 0 48 48"><path d="M8 23 24 8l16 15v18H29V29H19v12H8z"/></svg><span>الرئيسية</span></button>
-      <button class="nav-btn" data-page="favorites"><svg viewBox="0 0 48 48"><path d="m24 6 5.5 11 12.5 1.8-9 8.8 2.1 12.4L24 34l-11.1 6 2.1-12.4-9-8.8L18.5 17z"/></svg><span>المفضلة</span></button>
-      <button class="nav-btn" data-page="notifications"><svg viewBox="0 0 48 48"><path d="M13 34h22l-3-4V20c0-6-3-10-8-10s-8 4-8 10v10zM20 38c1 3 7 3 8 0"/></svg><span>الإشعارات</span></button>
-      <button class="nav-btn" data-page="help"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M19 19c1-4 9-5 10 0 1 4-5 5-5 9M24 34h.01"/></svg><span>المساعدة</span></button>
+      <button class="nav-btn active" data-nav="home"><svg viewBox="0 0 48 48"><path d="M7 23 24 7l17 16v18H29V29H19v12H7z"/></svg><span>الرئيسية</span></button>
+      <button class="nav-btn" data-page="favorites"><svg viewBox="0 0 48 48"><path d="m24 5 5.7 11.7 12.9 1.9-9.3 9 2.2 12.8L24 34.4l-11.5 6 2.2-12.8-9.3-9 12.9-1.9z"/></svg><span>المفضلة</span></button>
+      <button class="nav-btn" data-page="notifications"><svg viewBox="0 0 48 48"><path d="M13 34h22l-3-4V20c0-7-3-11-8-11s-8 4-8 11v10zM20 38c1 4 7 4 8 0"/></svg><span>الإشعارات</span></button>
+      <button class="nav-btn" data-page="help"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M18 19c1-5 10-6 12 0 1 5-6 6-6 11M24 36h.01"/></svg><span>المساعدة</span></button>
     </nav>
   </section>
-
-  <section id="serviceScreen" class="screen"><header class="screen-head"><button class="back-btn" id="backBtn">➜</button><div class="screen-title" id="screenTitle"></div></header><div class="screen-body" id="screenBody"></div></section>
+  <section class="view service-view" id="serviceView"><header class="service-head"><button class="back-btn" id="backBtn">›</button><div class="service-title" id="serviceTitle"></div></header><div class="service-body" id="serviceBody"></div></section>
+  <div class="drawer-overlay" id="drawerOverlay"><aside class="drawer"><div class="drawer-logo">Bankily</div><button data-page="account">حسابي</button><button data-page="transfer">تحويل الأموال</button><button data-page="notifications">الإشعارات</button><button data-page="help">المساعدة</button><button id="logoutBtn">تسجيل الخروج</button></aside></div>
+  <div class="toast" id="toast"></div>
 </div>
-
-<div class="side-menu" id="sideMenu"><aside class="drawer"><h2>Bankily</h2><button data-page="account">حسابي</button><button data-page="transfer">تحويل الأموال</button><button data-page="notifications">الإشعارات</button><button data-page="help">المساعدة</button><button id="closeMenu">إغلاق القائمة</button></aside></div>
-<div class="toast" id="toast"></div>
 <script>
-const home=document.getElementById('home'),screen=document.getElementById('serviceScreen'),screenTitle=document.getElementById('screenTitle'),screenBody=document.getElementById('screenBody'),toast=document.getElementById('toast');
+const loginView=document.getElementById('loginView');
+const homeView=document.getElementById('homeView');
+const serviceView=document.getElementById('serviceView');
+const serviceTitle=document.getElementById('serviceTitle');
+const serviceBody=document.getElementById('serviceBody');
+const drawerOverlay=document.getElementById('drawerOverlay');
+const toast=document.getElementById('toast');
 const pageNames={purchase:'تسديد مشتريات',transfer:'تحويل الأموال',account:'حسابي',recharge:'تعبئة رصيد الهاتف',bills:'تسديد الفواتير',checks:'طلب دفتر شيكات',cards:'البطاقات البنكية',cash:'سحب النقود',bpay:'ب-باي',gimtel:'جيمتل',favorites:'المفضلة',notifications:'الإشعارات',help:'المساعدة'};
-function field(label,type='text',placeholder=''){return `<div class="field"><label>${label}</label><input type="${type}" placeholder="${placeholder}"></div>`}
-function select(label,opts){return `<div class="field"><label>${label}</label><select>${opts.map(x=>`<option>${x}</option>`).join('')}</select></div>`}
-function form(title,fields,button='متابعة'){return `<div class="panel"><h3>${title}</h3>${fields}<button class="primary action-btn">${button}</button></div>`}
-function renderPage(key){
- const templates={
- transfer:form('تحويل جديد',field('رقم المستفيد','tel','مثال: 22 00 00 00')+field('المبلغ','number','0 MRU')+field('البيان','text','اختياري'),'إرسال التحويل'),
- purchase:form('تسديد مشتريات',field('رقم التاجر','text','رقم التاجر')+field('المبلغ','number','0 MRU')+field('المرجع','text','اختياري'),'تأكيد الدفع'),
- account:`<div class="panel"><h3>معلومات الحساب</h3><div class="list-item"><span>الاسم</span><b>مستخدم Bankily</b></div><div class="list-item"><span>رقم الهاتف</span><b>—</b></div><div class="list-item"><span>الرصيد</span><b>0 MRU</b></div></div><button class="secondary action-btn">تعديل المعلومات</button>`,
- recharge:form('تعبئة رصيد الهاتف',select('المشغل',['Mauritel','Mattel','Chinguitel'])+field('رقم الهاتف','tel','رقم الهاتف')+field('المبلغ','number','0 MRU'),'تعبئة الرصيد'),
- bills:form('تسديد الفواتير',select('نوع الفاتورة',['الكهرباء','الماء','الإنترنت','الهاتف'])+field('رقم الاشتراك','text','رقم الاشتراك')+field('المبلغ','number','0 MRU'),'تسديد الفاتورة'),
- checks:form('طلب دفتر شيكات',select('نوع الدفتر',['25 ورقة','50 ورقة'])+field('الفرع','text','اختر الفرع'),'إرسال الطلب'),
- cards:`<div class="panel"><h3>بطاقاتي</h3><div class="empty">لا توجد بطاقات مضافة بعد.</div></div><button class="primary action-btn">طلب بطاقة بنكية</button>`,
- cash:form('سحب النقود',field('المبلغ','number','0 MRU')+field('رمز الوكيل','text','اختياري'),'إنشاء رمز السحب'),
- bpay:form('ب-باي',field('رقم الخدمة','text','رقم الخدمة')+field('المبلغ','number','0 MRU'),'الدفع'),
- gimtel:`<div class="panel"><h3>خدمات جيمتل</h3><div class="list-item"><span>الخدمة</span><span class="chip">متاحة قريبًا</span></div></div>`,
- favorites:`<div class="panel"><h3>المفضلة</h3><div class="empty">لم تضف أي خدمة إلى المفضلة بعد.</div></div>`,
- notifications:`<div class="panel"><h3>الإشعارات</h3><div class="list-item"><div><b>مرحبًا بك في Bankily</b><div style="color:#777;margin-top:5px;font-size:13px">تم تجهيز النسخة الأولية من التطبيق.</div></div><span class="chip">جديد</span></div></div>`,
- help:`<div class="panel"><h3>المساعدة</h3><div class="list-item"><span>الأسئلة الشائعة</span><b>‹</b></div><div class="list-item"><span>الاتصال بالدعم</span><b>‹</b></div><div class="list-item"><span>عن التطبيق</span><b>‹</b></div></div>`
- };
- return templates[key]||`<div class="panel"><div class="empty">هذه الخدمة قيد التجهيز.</div></div>`;
-}
-function openPage(key){screenTitle.textContent=pageNames[key]||'Bankily';screenBody.innerHTML=renderPage(key);home.style.display='none';screen.classList.add('active');document.getElementById('sideMenu').classList.remove('open');window.scrollTo(0,0);screenBody.querySelectorAll('.action-btn').forEach(b=>b.addEventListener('click',()=>showToast('تم حفظ الطلب تجريبيًا')))}
-function goHome(){screen.classList.remove('active');home.style.display='block';window.scrollTo(0,0)}
-function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1900)}
-document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>openPage(el.dataset.page)));document.getElementById('backBtn').addEventListener('click',goHome);document.getElementById('openMenu').addEventListener('click',()=>document.getElementById('sideMenu').classList.add('open'));document.getElementById('closeMenu').addEventListener('click',()=>document.getElementById('sideMenu').classList.remove('open'));document.getElementById('sideMenu').addEventListener('click',e=>{if(e.target.id==='sideMenu')e.currentTarget.classList.remove('open')});window.addEventListener('popstate',goHome);
+function showView(view){[loginView,homeView,serviceView].forEach(v=>v.classList.remove('active'));view.classList.add('active');view.scrollTop=0}
+function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1800)}
+function pageMarkup(key){if(key==='notifications'||key==='favorites')return `<div class="panel"><h3>${pageNames[key]}</h3><p>لا توجد عناصر جديدة حالياً.</p></div>`;if(key==='help')return `<div class="panel"><h3>المساعدة</h3><p>يمكنك التواصل مع خدمة الزبناء للحصول على المساعدة في استخدام التطبيق.</p><button class="primary" onclick="showToast('تم إرسال طلب المساعدة')">طلب المساعدة</button></div>`;if(key==='account')return `<div class="panel"><h3>معلومات الحساب</h3><p>رقم الهاتف: 37513164</p><p>حالة الحساب: نشط</p></div>`;return `<div class="panel"><h3>${pageNames[key]||'الخدمة'}</h3><div class="form-row"><label>المبلغ أو البيانات المطلوبة</label><input inputmode="numeric" placeholder="أدخل البيانات"></div><button class="primary" onclick="showToast('هذه نسخة تجريبية')">متابعة</button></div>`}
+function openPage(key){drawerOverlay.classList.remove('open');serviceTitle.textContent=pageNames[key]||'Bankily';serviceBody.innerHTML=pageMarkup(key);showView(serviceView)}
+document.getElementById('loginBtn').addEventListener('click',()=>showView(homeView));
+document.getElementById('forgotBtn').addEventListener('click',()=>showToast('سيتم إرسال تعليمات الاسترجاع'));
+document.getElementById('registerBtn').addEventListener('click',()=>showToast('التسجيل متاح قريباً'));
+document.getElementById('menuBtn').addEventListener('click',()=>drawerOverlay.classList.add('open'));
+drawerOverlay.addEventListener('click',e=>{if(e.target===drawerOverlay)drawerOverlay.classList.remove('open')});
+document.getElementById('backBtn').addEventListener('click',()=>showView(homeView));
+document.getElementById('logoutBtn').addEventListener('click',()=>{drawerOverlay.classList.remove('open');showView(loginView)});
+document.querySelectorAll('[data-page]').forEach(btn=>btn.addEventListener('click',()=>openPage(btn.dataset.page)));
+document.querySelectorAll('[data-nav="home"]').forEach(btn=>btn.addEventListener('click',()=>showView(homeView)));
+document.querySelectorAll('.pin-cell').forEach((input,index,all)=>{input.addEventListener('input',()=>{input.value=input.value.replace(/\D/g,'').slice(0,1);if(input.value&&index<all.length-1)all[index+1].focus()});input.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!input.value&&index>0)all[index-1].focus()})});
 </script>
 </body>
 </html>

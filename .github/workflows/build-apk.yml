@@ -1,4 +1,4 @@
-name: Build and publish APK
+name: Build and publish Bankily APK
 
 on:
   workflow_dispatch:
@@ -31,13 +31,17 @@ jobs:
           cp app.html android/app/src/main/assets/index.html
       - name: Install Android SDK
         run: yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
-      - name: Build APK
+      - name: Build installable APK
         run: gradle -p android assembleDebug --no-daemon
-      - name: Publish APK in repository
+      - name: Publish APK
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk Bankily.apk
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add Bankily.apk
-          git commit -m "build: publish Bankily APK" || exit 0
+          git commit -m "build: publish installable Bankily APK" || exit 0
           git push
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Bankily-APK
+          path: Bankily.apk

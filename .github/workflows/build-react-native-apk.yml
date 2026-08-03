@@ -7,6 +7,10 @@ on:
     paths:
       - 'mobile/**'
       - '.github/workflows/build-react-native-apk.yml'
+  pull_request:
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/build-react-native-apk.yml'
 
 jobs:
   build-apk:

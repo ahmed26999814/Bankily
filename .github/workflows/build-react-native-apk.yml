@@ -74,5 +74,5 @@ jobs:
             echo "Published APK is already current."
             exit 0
           fi
-          git commit -m "build: publish Bankily v1.1.0 APK"
+          git commit -m "build: publish Bankily v1.2.0 APK"
           git push origin HEAD:"$TARGET_BRANCH"

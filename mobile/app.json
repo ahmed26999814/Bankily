@@ -2,13 +2,13 @@
   "expo": {
     "name": "Bankily",
     "slug": "bankily-mobile",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "android": {
       "package": "mr.bankily.mobile",
-      "versionCode": 1,
+      "versionCode": 2,
       "edgeToEdgeEnabled": false
     },
     "ios": {

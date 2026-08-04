@@ -12,12 +12,12 @@ on:
       - 'mobile/**'
       - '.github/workflows/build-react-native-apk.yml'
 
+permissions:
+  contents: write
+
 jobs:
   build-apk:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: mobile
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,23 +34,42 @@ jobs:
           java-version: '17'
 
       - name: Install dependencies
+        working-directory: mobile
         run: npm install
 
       - name: Validate web bundle
+        working-directory: mobile
         run: npx expo export --platform web
 
       - name: Generate Android project
+        working-directory: mobile
         run: npx expo prebuild --platform android --clean --no-install
 
       - name: Build release APK
+        working-directory: mobile
         run: |
           chmod +x android/gradlew
           cd android
           ./gradlew assembleRelease
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Bankily-React-Native-APK
           path: mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
+
+      - name: Publish latest APK on website
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cp mobile/android/app/build/outputs/apk/release/app-release.apk Bankily.apk
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Bankily.apk
+          if git diff --cached --quiet; then
+            echo "Published APK is already current."
+            exit 0
+          fi
+          git commit -m "build: publish Bankily v1.1.0 APK"
+          git pull --rebase origin main
+          git push origin HEAD:main

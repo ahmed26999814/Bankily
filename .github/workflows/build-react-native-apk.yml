@@ -75,5 +75,4 @@ jobs:
             exit 0
           fi
           git commit -m "build: publish Bankily v1.1.0 APK"
-          git pull --rebase origin "$TARGET_BRANCH"
           git push origin HEAD:"$TARGET_BRANCH"

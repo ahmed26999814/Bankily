@@ -19,8 +19,10 @@ jobs:
   build-apk:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -59,8 +61,10 @@ jobs:
           path: mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
 
-      - name: Publish latest APK on website
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Commit latest APK for the website
+        if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        env:
+          TARGET_BRANCH: ${{ github.event_name == 'pull_request' && github.head_ref || 'main' }}
         run: |
           cp mobile/android/app/build/outputs/apk/release/app-release.apk Bankily.apk
           git config user.name "github-actions[bot]"
@@ -71,5 +75,4 @@ jobs:
             exit 0
           fi
           git commit -m "build: publish Bankily v1.1.0 APK"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git push origin HEAD:"$TARGET_BRANCH"
